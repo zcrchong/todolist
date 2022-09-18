@@ -14,13 +14,18 @@ class App extends Component {
             {id:'003',name:'打豆豆',done:true}
         ]
     }
+    addTodo = (todoObj)=> {
+        let newTodos = []
+        newTodos = [todoObj, ...this.state.todos]
+        this.setState({todos:newTodos})
+    }
 
     render() {
         const {todos} = this.state
         return (
                 <div className="todo-container">
                     <div className="todo-wrap">
-                        <Header/>
+                        <Header addTodo = {this.addTodo}/>
                         <List todos={todos}/>
                         <Footer/>
                     </div>
